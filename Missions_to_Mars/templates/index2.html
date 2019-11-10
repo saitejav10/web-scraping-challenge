@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+  </head>
+  <body>
+    <div class="heading" style="background-image: url(https://1.bp.blogspot.com/-83667afWSSE/XZNsgDx-p3I/AAAAAAAAEQs/DawqMhL08HsfRpHfkC5hxL8XmW1DB8zDwCLcBGAsYHQ/s2048/SpaceX%2BStarship%2BSuper%2BHeavy%2Blaunch%2B%2528horizontal%2Bwallpaper%2529_humanMars.net.jpg); background-size: cover; background-position: center;">
+        <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                          <div class="jumbotron" style="background: none">
+                              <h1 class="display-4" style="text-align: center;">Hello, Everyone!</h1>
+                              <h4 style="text-align: center;">Welcome to my mission to mars</h4>
+                              <p style="text-align: center;">In this assignment, I built a web application that scrapes various websites for data related to planet Mars and display the information in a single HTML page.</p>
+                          </div>
+                  </div>
+              </div>
+
+    <!--Navigation bar-->
+    <div class="jumbotron text-center" style="background-image: url(https://wallpapersite.com/images/pages/pic_h/14678.jpg); background-size: cover; background-position: center;">
+        <h1 class="display-4" style="font-weight: bold;">Are you ready to lift off?</h1>
+        <a class="btn btn-lg text-white" style="background-color:darkred" href="/scrape" role="button"> Start your engine</a>
+    </div>
+    </div>  
+
+
+
+    <!-- Latest Mars News -->
+    <div class="container">
+            <h3 style="color: red">NASA Mars News</h3>
+            <hr>
+            <h6 style="font-weight: bold;">{{ mars_info.news_title }}</h6>
+            <p>{{ mars_info.news_paragraph }}</p>
+        </div>
+        
+        <!--Mars featured image-->
+        <div class="container" style="background: none; padding: 20px;">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="box">
+                <h3 class="title" style="color: red">JPL Featured Space Image</h3>
+                <hr>
+                <br>
+                  <img src="{{ mars_info.featured_image_url }}" alt="Mars Featured Image" style="width:100%">
+              </div>
+            </div>
+    
+            <!--Current weather and mars facts-->
+            <br>
+            <div class="col-md-5">
+                <div class="box">
+                  <div class="container">
+                    <div class="row">
+                        <div class="card" style="width:auto; background-color: transparent;">
+                            <div class="card-body">
+                                <h3 class="card-title" style="text-align: center; color: red" >Current Weather on Mars</h3>
+                                <p class="card-text">{{ mars_info.weather_tweet }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" style="width: auto;">
+                      <h3 style="text-align: center; color: red">Mars Facts</h3>
+                      <div>
+                          {{ mars_info.mars_facts|safe}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+    <!-- Mars Hemispheres -->
+    <br>
+    <div class="card-deck">
+    <div class="container">
+        <h3 style="text-align: center; color: red">Mars Hemispheres</h3>
+        <hr>
+        <br>
+        <div class="row">
+                    {% for info in mars_info.hemispheres %}
+                  <div class="col-md-3">
+                    <div class="card text-black" style="margin: 25px;">
+                        <img class="card-img-top" src="{{ info.final_image_url }}" alt="Mars hemispheres Images"/>
+                        <div class="card-body">
+                            <p class="card-text">{{ info.title }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+
+
+</html>
